@@ -12,6 +12,8 @@ Widget de carrito: Un pequeño elemento visual que muestra dinámicamente la can
 
 Video demostrativo de uso:
 
+https://github.com/joseperezm/React-EntregaFinal-Jose-Perez/assets/126683072/1ff2a4b8-4552-4ebe-9a8a-c342a9e7bf9e
+
 Instalación de app:
 
 - Clonar repo.
