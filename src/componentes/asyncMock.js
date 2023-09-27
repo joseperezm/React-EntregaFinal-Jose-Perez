@@ -94,7 +94,7 @@ const products = [
       name: 'Bucal negro',
       price: 30000,
       category: 'protecciones',
-      description: 'Bucal negro para artes marciales',
+      description: 'cc',
       img: '/productos/bucal-negro.jpg',
       stock: 30
     },

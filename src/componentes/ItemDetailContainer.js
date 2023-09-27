@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
 import { db } from '../services/firebase/firebaseConfig';
@@ -17,7 +17,7 @@ const ItemDetailContainer = () => {
                 if (productDoc.exists()) {
                     setProduct({ id: productDoc.id, ...productDoc.data() });
                 } else {
-                    console.log("No existe el producto con el ID especificado.");
+                    console.log("No existe ese producto...");
                 }
             } catch (error) {
                 console.error(error);

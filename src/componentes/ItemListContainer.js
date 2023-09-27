@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
 import { useParams } from 'react-router-dom';
 import { db } from '../services/firebase/firebaseConfig';
@@ -83,9 +83,7 @@ const ItemListContainer = () => {
                 <div className="item-list-container">
                     {Object.keys(groupedProducts).map((category) => (
                         <div key={category}>
-                            <h2 className='text-center gradient-text' style={{
-                                fontSize: '28px',
-                                fontWeight: 'bold',
+                            <h2 className='text-center mt-3' style={{
                                 textTransform: 'uppercase',
                             }}>{category}</h2>
                             <ItemList products={groupedProducts[category]} />
