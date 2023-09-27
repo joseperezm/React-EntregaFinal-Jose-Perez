@@ -1,40 +1,100 @@
-import { useState, useEffect} from 'react'
-import { getProducts, getProductsByCategory } from './asyncMock.js'
-import ItemList from './ItemList.js'
+import React, { useEffect, useState, useContext } from 'react';
+import ItemList from './ItemList';
+import { useParams } from 'react-router-dom';
+import { db } from '../services/firebase/firebaseConfig';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 
-import { useParams } from 'react-router-dom'
+const ItemListContainer = () => {
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const { categoryId } = useParams();
+    const [, setGreeting] = useState('');
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const productsCollection = collection(db, 'products');
+                let firestoreQuery;
+                if (categoryId) {
+                    firestoreQuery = query(productsCollection, where('category', '==', categoryId));
+                    setGreeting(`${categoryId}`);
+                } else {
+                    firestoreQuery = productsCollection;
+                    setGreeting('Bienvenidos');
+                }
 
-const ItemListContainer = ({ greeting }) => {
-  const [products, setProducts] = useState([])
+                const querySnapshot = await getDocs(firestoreQuery);
 
-  const { categoryId } = useParams()
+                const productData = querySnapshot.docs.map((doc) => ({
+                    id: doc.id,
+                    ...doc.data(),
+                }));
 
-  useEffect(() => {
-    const asyncFunc = categoryId ? getProductsByCategory : getProducts
+                setProducts(productData);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-    asyncFunc(categoryId)
-    .then(response => {
-      setProducts(response)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }, [categoryId])
+        fetchProducts();
+    }, [categoryId]);
 
-  const updatedGreeting = categoryId
-    ? `${capitalizeFirstLetter(categoryId)}`
-    : greeting;
+    const SkeletonProduct = () => (
+        <div className="d-flex justify-content-center align-items-center">
+            <div
+                style={{ width: "250px", height: "auto", marginRight: "50px" }}
+            >
+            </div>
+        </div>
+    );
 
-  return (
-    <div>
-      <h1>{updatedGreeting}</h1>
-      <ItemList products={products}/>
-    </div>
-  )
-}
+    const groupProductsByCategory = () => {
+        const groupedProducts = {};
 
-export default ItemListContainer
+        products.forEach((product) => {
+            const { category } = product;
+            if (!groupedProducts[category]) {
+                groupedProducts[category] = [];
+            }
+            groupedProducts[category].push(product);
+        });
+
+        return groupedProducts;
+    };
+
+    const groupedProducts = groupProductsByCategory();
+
+    const renderTitle = () => {
+        if (!categoryId)
+            return null;
+    };
+
+    return (
+        <div>
+            {renderTitle()}
+            {loading ? (
+                <div className="d-flex flex-wrap justify-content-center align-items-center">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                        <SkeletonProduct key={index} />
+                    ))}
+                </div>
+            ) : (
+                <div className="item-list-container">
+                    {Object.keys(groupedProducts).map((category) => (
+                        <div key={category}>
+                            <h2 className='text-center gradient-text' style={{
+                                fontSize: '28px',
+                                fontWeight: 'bold',
+                                textTransform: 'uppercase',
+                            }}>{category}</h2>
+                            <ItemList products={groupedProducts[category]} />
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default ItemListContainer;

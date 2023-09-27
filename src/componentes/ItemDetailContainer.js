@@ -1,28 +1,37 @@
-import { useState, useEffect } from "react";
-import { getProductById } from './asyncMock.js';
-import ItemDetail from './ItemDetail.js';
+import React, { useState, useEffect, useContext } from 'react';
+import ItemDetail from './ItemDetail';
 import { useParams } from 'react-router-dom';
+import { db } from '../services/firebase/firebaseConfig';
+import { doc, getDoc } from 'firebase/firestore';
 
 const ItemDetailContainer = () => {
-  const [product  , setProduct] = useState(null)
+    const [product, setProduct] = useState(null);
+    const { itemId } = useParams();
 
-  const { itemId } = useParams()
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {                
+                const productRef = doc(db, 'products', itemId);                
+                const productDoc = await getDoc(productRef);
 
-  useEffect(() => {
-    getProductById(itemId)
-    .then(response => {
-      setProduct(response)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }, [itemId])
+                if (productDoc.exists()) {
+                    setProduct({ id: productDoc.id, ...productDoc.data() });
+                } else {
+                    console.log("No existe el producto con el ID especificado.");
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        };
 
-  return(
-    <div className='ItemDetailContainer d-flex justify-content-center'> 
-      <ItemDetail {...product} />
-    </div>
-  )
-}
+        fetchProduct();
+    }, [itemId]);
 
-export default ItemDetailContainer
+    return (
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+            {product ? <ItemDetail {...product} /> : <p>Cargando...</p>}
+        </div>
+    );
+};
+
+export default ItemDetailContainer;

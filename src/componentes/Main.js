@@ -3,8 +3,6 @@ import ItemDetailContainer from "./ItemDetailContainer";
 import ItemListContainer from "./ItemListContainer";
 import Cart from './Cart'
 
-import { CartProvider } from '../context/CartContext'
-
 function Main () {
     return (
         <>
