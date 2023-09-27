@@ -90,7 +90,7 @@ const Checkout = () => {
                         <h2>Tu ID de orden es: <span className="orderId">{orderId}</span></h2>
                     </div>
                     <div className="fondo-blanco mt-3">
-                        <h3>Detalle compra</h3>
+                        <h3>Tu Detalle</h3>
                         <ul>
                             {objOrder &&
                                 objOrder.items.map((item) => (
@@ -101,7 +101,7 @@ const Checkout = () => {
                                                 <p><strong>Cantidad:</strong> {item.quantity}</p>
                                             </div>
                                             <div className="col-6 text-right">
-                                                <p><strong>Precio unitario:</strong> ${item.price}</p>
+                                                <p><strong>Valor:</strong> ${item.price}</p>
                                                 <p><strong>Subtotal:</strong> ${item.subtotal}</p>
                                             </div>
                                         </div>
