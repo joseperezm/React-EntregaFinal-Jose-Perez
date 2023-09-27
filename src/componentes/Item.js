@@ -1,10 +1,10 @@
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
 
-const Item = ({id, name, image, price, stock}) => {
+const Item = ({id, name, img, price, stock}) => {
   return (
     <Card style={{ width: '18rem' }} className='m-3'>
-      <Card.Img variant="top" src={image} alt={name} />
+      <Card.Img variant="top" src={img} alt={name} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>

@@ -77,3 +77,22 @@ main {
 .terminar_compra {
     margin: auto;
 }
+.resumen-carro {
+    max-width: 400px;
+    margin: auto;
+}
+.unidades-carro {
+    max-width: 80px;
+    margin: auto;
+}
+.ancho100 {
+    width: 100%;
+}
+.fondo-blanco {
+    background-color: whitesmoke;
+    color: slategray;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}

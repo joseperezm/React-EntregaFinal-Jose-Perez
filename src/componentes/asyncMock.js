@@ -5,7 +5,7 @@ const products = [
       price: 10000,
       category: 'kimonos',
       description: 'Kimono blanco para artes marciales',
-      image: '/productos/kimono-blanco.jpg',
+      img: '/productos/kimono-blanco.jpg',
       stock: 5
     },
     {
@@ -14,7 +14,7 @@ const products = [
       price: 20000,
       category: 'kimonos',
       description: 'Kimono azul para artes marciales',
-      image: '/productos/kimono-azul.jpg',
+      img: '/productos/kimono-azul.jpg',
       stock: 10
     },
     {
@@ -23,7 +23,7 @@ const products = [
       price: 30000,
       category: 'kimonos',
       description: 'Kimono negro para artes marciales',
-      image: '/productos/kimono-negro.jpg',
+      img: '/productos/kimono-negro.jpg',
       stock: 15
     },
     {
@@ -32,7 +32,7 @@ const products = [
       price: 30000,
       category: 'kimonos',
       description: 'Kimono rojo para artes marciales',
-      image: '/productos/kimono-rojo.jpg',
+      img: '/productos/kimono-rojo.jpg',
       stock: 15
     },
     {
@@ -41,7 +41,7 @@ const products = [
       price: 10000,
       category: 'accesorios',
       description: 'Cinturón blanco para artes marciales',
-      image: '/productos/cinturon-blanco.jpg',
+      img: '/productos/cinturon-blanco.jpg',
       stock: 10
     },
     {
@@ -50,7 +50,7 @@ const products = [
       price: 5000,
       category: 'accesorios',
       description: 'Cinturón amarillo para artes marciales',
-      image: '/productos/cinturon-amarillo.jpg',
+      img: '/productos/cinturon-amarillo.jpg',
       stock: 20
     },
     {
@@ -59,7 +59,7 @@ const products = [
       price: 5000,
       category: 'accesorios',
       description: 'Cinturón verde para artes marciales',
-      image: '/productos/cinturon-verde.jpg',
+      img: '/productos/cinturon-verde.jpg',
       stock: 30
     },
     {
@@ -68,7 +68,7 @@ const products = [
       price: 5000,
       category: 'accesorios',
       description: 'Cinturón purpura para artes marciales',
-      image: '/productos/cinturon-purpura.jpg',
+      img: '/productos/cinturon-purpura.jpg',
       stock: 30
     },
     {
@@ -77,7 +77,7 @@ const products = [
       price: 5000,
       category: 'protecciones',
       description: 'Bucal blanco para artes marciales',
-      image: '/productos/bucal-blanco.jpg',
+      img: '/productos/bucal-blanco.jpg',
       stock: 10
     },
     {
@@ -86,7 +86,7 @@ const products = [
       price: 20000,
       category: 'protecciones',
       description: 'Bucal azul para artes marciales',
-      image: '/productos/bucal-azul.jpg',
+      img: '/productos/bucal-azul.jpg',
       stock: 20
     },
     {
@@ -95,7 +95,7 @@ const products = [
       price: 30000,
       category: 'protecciones',
       description: 'Bucal negro para artes marciales',
-      image: '/productos/bucal-negro.jpg',
+      img: '/productos/bucal-negro.jpg',
       stock: 30
     },
     {
@@ -104,7 +104,7 @@ const products = [
       price: 30000,
       category: 'protecciones',
       description: 'Bucal rojo para artes marciales',
-      image: '/productos/bucal-rojo.jpg',
+      img: '/productos/bucal-rojo.jpg',
       stock: 30
     }
   ]

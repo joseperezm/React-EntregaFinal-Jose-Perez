@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 import { CartContext } from '../context/CartContext'
 
-const ItemDetail = ({ id, name, image, category, description, price, stock }) => {
+const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [quantityAdded, setQuantityAdded] = useState(0);
 
@@ -26,7 +26,7 @@ const ItemDetail = ({ id, name, image, category, description, price, stock }) =>
   };
   return (
         <Card style={{ width: '18rem' }} className='m-3 pb-3'>
-        <Card.Img variant="top" src={image} alt={name} />
+        <Card.Img variant="top" src={img} alt={name} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>
