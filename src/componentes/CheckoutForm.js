@@ -20,10 +20,11 @@ const CheckoutForm = ({ onConfirm }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="fondo-blanco">
           <div>
-            <label htmlFor="name">Nombre:</label>
             <input
+              placeholder="Nombre"
+              className="form-control"
               type="text"
               id="name"
               value={name}
@@ -32,8 +33,9 @@ const CheckoutForm = ({ onConfirm }) => {
             />
           </div>
           <div>
-            <label htmlFor="phone">Teléfono:</label>
             <input
+              placeholder="Teléfono"
+              className="form-control mt-3"
               type="tel"
               id="phone"
               value={phone}
@@ -42,8 +44,9 @@ const CheckoutForm = ({ onConfirm }) => {
             />
           </div>
           <div>
-            <label htmlFor="email">Correo:</label>
             <input
+              placeholder="Email"
+              className="form-control mt-3"
               type="email"
               id="email"
               value={email}
@@ -51,7 +54,7 @@ const CheckoutForm = ({ onConfirm }) => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary mt-2">Confirmar</button>
+          <button type="submit" className="btn btn-primary mt-4">Confirmar</button>
         </form>
       );
 };

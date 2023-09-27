@@ -80,15 +80,17 @@ const Checkout = () => {
         <div>
             <h1>Checkout</h1>
             {loading ? (
-                <h2>Se está generando la orden...</h2>
+                <div className="fondo-blanco">
+                <h2>¡Se está generando la orden!</h2>
+                </div>
             ) : orderId ? (
                 <div>
-                    <div>
-                        <h2>Gracias por su compra</h2>
-                        <h2>El ID de su orden es: {orderId}</h2>
+                    <div className="fondo-blanco">
+                        <h2>¡Gracias por la compra!</h2>
+                        <h2>Tu ID de orden es: <span className="orderId">{orderId}</span></h2>
                     </div>
-                    <div>
-                        <h3>Factura</h3>
+                    <div className="fondo-blanco mt-3">
+                        <h3>Detalle compra</h3>
                         <ul>
                             {objOrder &&
                                 objOrder.items.map((item) => (
@@ -106,8 +108,8 @@ const Checkout = () => {
                                     </li>
                                 ))}
                         </ul>
-                        <p>Total: ${objOrder && objOrder.total}</p>
-                        <Link to="/">Volver al inicio</Link>
+                        <p className="totalCompra">Total: ${objOrder && objOrder.total}</p>
+                        <Link to="/" className="btn btn-primary">Volver al inicio</Link>
                     </div>
                 </div>
             ) : (
